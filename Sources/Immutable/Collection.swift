@@ -55,11 +55,4 @@ extension RangeReplaceableCollection {
     copy.removeFirst(n)
     return copy
   }
-
-  /// Returns a new collection by replacing given subrange with new elements.
-  public func replacingSubrange<C>(_ subrange: Range<Self.Index>, with newElements: C) -> Self where C : Collection, C.Iterator.Element == Self.Iterator.Element {
-    var copy = self
-    copy.replaceSubrange(subrange, with: newElements)
-    return copy
-  }
 }
