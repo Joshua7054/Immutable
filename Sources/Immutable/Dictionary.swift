@@ -25,20 +25,6 @@ extension Dictionary {
     return Dictionary<T, U>(elements: try self.compactMap(transform))
   }
 
-  /// Returns a new dictionary by updating a value for key.
-  public func updatingValue(_ value: Value, forKey key: Key) -> Dictionary {
-    var copy = self
-    copy.updateValue(value, forKey: key)
-    return copy
-  }
-
-  /// Returns a new dictionary by removing a value for key.
-  public func removingValue(forKey key: Key) -> Dictionary {
-    var copy = self
-    copy.removeValue(forKey: key)
-    return copy
-  }
-
   /// returns a new directory by merging all values for respective keys.
   public func merging(_ dictionary: Dictionary<Key, Value>) -> Dictionary<Key, Value> {
     var copy = self
