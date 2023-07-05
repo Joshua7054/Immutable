@@ -26,9 +26,10 @@ extension Collection where Iterator.Element: _OptionalType {
 
 extension Dictionary where Value: _OptionalType {
   public func filterNil() -> [Key: Value._Wrapped] {
-    return self.flatMap { key, value in
-      return value.flatMap { (key, $0) }
-    }
+      self.reduce(into: [:]) {
+          guard let unwrapped = $1.value.flatMap({ $0 }) else { return }
+          $0[$1.key] = unwrapped
+      }
   }
 }
 
